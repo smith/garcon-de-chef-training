@@ -8,8 +8,8 @@ class GarconDeChefTraining
 
   attr_reader :config, :output_path, :terraform_dir, :safe_company_name
 
-  def initialize
-    @config = YAML.safe_load(File.read('config.yml'))
+  def initialize(path_to_config_yaml = "config.yml")
+    @config = YAML.safe_load(File.read(path_to_config_yaml))
     # This replaces non-alphanumeric characters with `-`
     # It is used in making directory path and prefixing Terraform variables
     @safe_company_name = config['company_name'].tr('^A-Za-z0-9', '-')
